@@ -189,7 +189,6 @@ ul li { margin-bottom: 0.4em; }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero-art img {
   width: 100%;
-  border: 1px solid var(--rule);
 }
 
 /* --- Problem ----------------------------------------------- */

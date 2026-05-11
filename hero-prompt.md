@@ -22,7 +22,7 @@ A single structured geometric polyhedron, the visual anchor of the entire image.
 The same fragments from the left, now resolved into clean, ordered, horizontal and stacked planes — a structured grid or layered stack. Calm, stable, aligned. Use lighter, brighter tones: white, ivory, pale-blue, with a single accent of **turquoise** or **warm orange** as a small confirmation indicator (a triangular tick or a small block). Everything here is parallel, balanced, and intentional.
 
 **BACKGROUND:**
-Pure white or near-white field (#FFFFFF or #FAFAF7). Optionally a single thin black horizontal line near the bottom of the canvas serving as an abstract ground/horizon — but no landscape, no skyline, no scenery. The composition floats on the white field.
+Pure white or near-white field (#FFFFFF or #FAFAF7). No horizon line, no ground line, no landscape, no skyline, no scenery, no border. The composition floats on the white field with no framing line.
 
 **STYLE — STRICT:**
 - Only straight lines and sharply broken edges. No curves anywhere. No circles or arcs unless built from straight segments.

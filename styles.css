@@ -447,17 +447,36 @@ ul li { margin-bottom: 0.4em; }
   border-bottom: 1px solid var(--rule);
 }
 .pilot-terms h3 {
-  font-size: 14px;
+  font-size: 20px;
   font-family: var(--font-display);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--blue);
-  margin-bottom: 0.6em;
+  letter-spacing: -0.005em;
+  color: var(--fg);
+  margin-bottom: 0.5em;
 }
 .pilot-terms p {
   font-size: 16px;
-  color: var(--fg);
+  color: var(--fg-muted);
+  line-height: 1.55;
+}
+
+.pilot-subhead {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  margin: 2.4em 0 1.2em;
+}
+
+.closing-line {
+  text-align: center;
+  font-style: italic;
+  color: var(--fg-muted);
+  font-size: 16px;
+  max-width: 720px;
+  margin: 2.4em auto 0;
 }
 
 /* --- Founders --------------------------------------------- */

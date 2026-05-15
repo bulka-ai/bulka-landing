@@ -52,7 +52,7 @@ Bulka.AI plugs into Slack, Teams, and your ticketing system. It answers question
 Four core capabilities:
 
 **Compliance Q&A**
-Instant cited answers on scheme rules, regional regulations (Reg E/Z, BSA, PSD2, local equivalents), and your internal procedures. No more "let me get back to you tomorrow."
+Instant cited answers on scheme rules, regional regulations (Reg E/Z, BSA, PSD2, local equivalents), your internal procedures, and your team's historical interpretations. No more "let me get back to you tomorrow."
 
 **Operations co-pilot**
 Reject resolution, ticket triage, and routing. The AI drafts the response; your analyst approves and sends.
@@ -113,13 +113,13 @@ For Mastercard reason code **4837 (No Cardholder Authorization)**, here is what 
 
 **Heading:** Three pilots, three segments
 
-| Segment | Team | Platform | Efficiency gain | Annual cost saved |
+| Segment | Team | Platform | Annual hours freed | Annual value unlocked |
 |---|---|---|---|---|
-| PSP in the US | Merchant onboarding, customer support, Adyen integration | Cloud | 1 FTE | ~$120K |
-| Acquiring processor in EU | Card ops team of 8 | OpenWay (Way4), cloud | 2 FTE | ~$180K |
-| Issuing/Acquiring processor in ME | Card ops team of 10 | On-prem CMS + domestic scheme | 5 FTE | ~$150K |
+| PSP in the US | Merchant onboarding, customer support, Adyen integration | Cloud | ~2,000 | ~$120K |
+| Acquiring processor in EU | Card ops team of 8 | OpenWay (Way4), cloud | ~4,000 | ~$180K |
+| Issuing/Acquiring processor in ME | Card ops team of 10 | On-prem CMS + domestic scheme | ~10,000 | ~$150K |
 
-*Figures are from early pilots with small teams. Outcomes scale with team size, use-case mix, and how mature your documentation already is — we'll size yours during the discovery call.*
+*Hours are redirected to judgment work, exception handling, and higher-value tasks — same headcount, more done. Figures are from early pilots with small teams; outcomes scale with team size and use-case mix. We'll size yours during the discovery call.*
 
 ---
 
@@ -134,6 +134,7 @@ For banks and larger processors, new-vendor onboarding can take months: TPRM rev
 - **Cloud or on-premises** deployment — your choice
 - **Pilots operate on documentation and anonymized samples** — no production cardholder data in scope
 - **No data-science team required** on your side
+- **Outcome-anchored fees** — we carry the build risk; you pay against measured productivity gains
 
 ---
 
@@ -141,10 +142,18 @@ For banks and larger processors, new-vendor onboarding can take months: TPRM rev
 
 **Heading:** 60 days. One team. One use case. Measurable results.
 
-- **Duration:** 60 days
-- **Cost:** flat monthly subscription (sized to your team — pilot pricing for small teams starts at $5K/month)
-- **What we need from you:** 2–3 SMEs for ~4 hours of calibration, one operational team as the test group, sandbox/read-only access to relevant systems, your scheme manuals and runbooks
-- **What you get:** configured AI assistant in your workflow, baseline measurement of current resolution time, weekly progress reports, a final ROI report with verified productivity delta — and a no-pressure go/no-go at week 8
+**Lede:** A 60-day pilot with weekly progress readouts. Pricing for small teams starts at $5K/month. We need 2–3 SMEs for ~4 hours of calibration, one operational team as the test group, sandbox or read-only access to relevant systems, and your scheme manuals and runbooks.
+
+**Subhead:** What you have at day 60
+
+- **Working software** — A live AI co-pilot deployed in your environment, in daily use by your operational team. Integrated into Slack/Teams and your ticketing system, with a full audit log of every query, answer, and source citation.
+- **Measured results** — A verified productivity delta against your own baseline: resolution time per ticket, escalation-to-SME rate, hours freed per week, end-user accuracy.
+- **Decision-grade documentation** — A final ROI report with verified numbers, a scoped scaling plan, and a security, integration, and TPRM posture summary — everything you need to decide what's next.
+- **Operational findings** — A current-state workflow map for the pilot team, a pain-point inventory ranked by impact, a use-case scoring matrix (effort vs. value), and a stakeholder readout with named owners.
+
+**Closing line:** *Pilot outputs become inputs for what's next — no rework, no re-discovery. A decision, not a leap of faith.*
+
+> *Intent: mirrors the Fiserv exec deck's "What You Have at Day 60" section. Same four artifact categories, language adapted for a fintech-CEO buyer (no "Phase 2" or "leadership commits" wording). The closing line is lifted directly from the deck for brand coherence across both audiences.*
 
 ---
 

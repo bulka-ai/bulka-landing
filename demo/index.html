@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Bulka.AI — Operator Flow (prototype)</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">◣◢</span>
+      <div>
+        <div class="brand-title">Bulka.AI · Operator Flow</div>
+        <div class="brand-sub">simulated prototype — no backend</div>
+      </div>
+    </div>
+
+    <div class="stats" id="stats">
+      <div class="stat"><span class="stat-num" id="stat-running">0</span><span class="stat-lbl">running</span></div>
+      <div class="stat hot"><span class="stat-num" id="stat-hot">0</span><span class="stat-lbl">hot</span></div>
+      <div class="stat stall"><span class="stat-num" id="stat-stalled">0</span><span class="stat-lbl">stalled</span></div>
+      <div class="stat done"><span class="stat-num" id="stat-done">0</span><span class="stat-lbl">done</span></div>
+    </div>
+
+    <div class="controls">
+      <label class="chk"><input type="checkbox" id="attn-only" /> Attention only</label>
+      <label class="speed">Speed <input type="range" id="speed" min="0.5" max="5" step="0.5" value="1.5" /><span id="speed-val">1.5×</span></label>
+      <button id="btn-pause" class="btn">⏸ Pause</button>
+      <button id="btn-inject" class="btn btn-primary">＋ Inject task</button>
+      <button id="btn-reset" class="btn">↻ Reset</button>
+    </div>
+  </header>
+
+  <div class="legend">
+    <span class="legend-title">Temperature</span>
+    <span class="pill cool">cool · on budget</span>
+    <span class="pill warm">warm · drifting</span>
+    <span class="pill hot">hot · over budget</span>
+    <span class="legend-sep"></span>
+    <span class="legend-title">Source</span>
+    <span class="src-badge jira">JIRA</span>
+    <span class="src-badge manual">MANUAL</span>
+    <span class="src-badge monitoring">MONITOR</span>
+  </div>
+
+  <main class="board" id="board">
+    <section class="lane" data-lane="backlog">
+      <div class="lane-head"><h2>Backlog</h2><span class="lane-count" id="count-backlog">0</span></div>
+      <div class="lane-cards" id="lane-backlog"></div>
+    </section>
+    <section class="lane" data-lane="queued">
+      <div class="lane-head"><h2>Queued</h2><span class="lane-count" id="count-queued">0</span></div>
+      <div class="lane-cards" id="lane-queued"></div>
+    </section>
+    <section class="lane" data-lane="running">
+      <div class="lane-head"><h2>Running</h2><span class="lane-count" id="count-running">0</span></div>
+      <div class="lane-cards" id="lane-running"></div>
+    </section>
+    <section class="lane lane-done" data-lane="done">
+      <div class="lane-head"><h2>Done</h2><span class="lane-count" id="count-done">0</span></div>
+      <div class="lane-cards" id="lane-done"></div>
+    </section>
+  </main>
+
+  <aside class="detail" id="detail" aria-hidden="true">
+    <!-- populated by app.js -->
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <footer class="footer">
+    Prototype for <code>openspec/changes/task-flow-board</code> · temperature =
+    <code>max(usedTokens/(est·pct), runtime/(est·pct))</code> · cool ≤ 1.0 · warm ≤ 1.5 · hot &gt; 1.5
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

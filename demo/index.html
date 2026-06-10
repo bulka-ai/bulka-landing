@@ -17,61 +17,81 @@
       </div>
     </div>
 
-    <div class="stats" id="stats">
-      <div class="stat"><span class="stat-num" id="stat-running">0</span><span class="stat-lbl">running</span></div>
-      <div class="stat hot"><span class="stat-num" id="stat-hot">0</span><span class="stat-lbl">hot</span></div>
-      <div class="stat stall"><span class="stat-num" id="stat-stalled">0</span><span class="stat-lbl">stalled</span></div>
-      <div class="stat done"><span class="stat-num" id="stat-done">0</span><span class="stat-lbl">done</span></div>
+    <!-- sources rail: Jira · Slack · Manual · Monitoring · Scheduled -->
+    <div class="src-rail" id="src-rail"></div>
+
+    <div class="presence" title="people viewing this board live">
+      <span class="pres-dots"><span class="av av-you">You</span><span class="av av-dana">DA</span></span>
+      <span class="pres-lbl">2 viewers</span>
     </div>
 
     <div class="controls">
-      <label class="chk"><input type="checkbox" id="attn-only" /> Attention only</label>
       <label class="speed">Speed <input type="range" id="speed" min="0.5" max="5" step="0.5" value="1.5" /><span id="speed-val">1.5×</span></label>
       <button id="btn-pause" class="btn">⏸ Pause</button>
-      <button id="btn-inject" class="btn btn-primary">＋ Inject task</button>
       <button id="btn-reset" class="btn">↻ Reset</button>
     </div>
   </header>
 
-  <div class="legend">
-    <span class="legend-title">Temperature</span>
-    <span class="pill cool">cool · on budget</span>
-    <span class="pill warm">warm · drifting</span>
-    <span class="pill hot">hot · over budget</span>
-    <span class="legend-sep"></span>
-    <span class="legend-title">Source</span>
-    <span class="src-badge jira">JIRA</span>
-    <span class="src-badge manual">MANUAL</span>
-    <span class="src-badge monitoring">MONITOR</span>
+  <!-- everything below the bar: board (flex-1) + collapsible orchestrator sidebar -->
+  <div class="shell" id="shell">
+    <main class="board" id="board">
+      <section class="lane lane-queued" data-lane="queued">
+        <div class="lane-head"><h2>Queued</h2><span class="lane-count" id="count-queued">0</span></div>
+        <div class="run-strip" id="queued-strip" hidden><button class="back-all" data-back="queued">← all queued</button></div>
+        <div class="lane-cards" id="lane-queued"></div>
+        <div class="run-detail" id="queued-detail" hidden></div>
+      </section>
+
+      <section class="lane lane-running" data-lane="running">
+        <div class="lane-head">
+          <h2>Running</h2>
+          <!-- in-lane filters: HOT + PAUSED counters/filters + by-agent (only Running) -->
+          <button class="lane-stat hot" id="ls-hot" title="filter hot (needs a human)"><b id="n-hot">0</b> hot</button>
+          <button class="lane-stat paused" id="ls-paused" title="filter paused"><b id="n-paused">0</b> paused</button>
+          <div class="agent-filter" id="agent-filter">
+            <button class="btn-mini" id="btn-agentf">agent ⌄</button>
+            <div class="agentf-pop" id="agentf-pop" hidden></div>
+          </div>
+          <span class="lane-count" id="count-running">0</span>
+        </div>
+        <!-- helicopter grid OR a single expanded card -->
+        <div class="run-strip" id="run-strip" hidden>
+          <button class="back-all" id="back-all" data-back="running">← all running</button>
+        </div>
+        <div class="lane-cards run-grid" id="lane-running"></div>
+        <div class="run-detail" id="run-detail" hidden></div>
+      </section>
+
+      <section class="lane lane-done" data-lane="done">
+        <div class="lane-head"><h2>Done</h2><span class="lane-count" id="count-done">0</span></div>
+        <div class="run-strip" id="done-strip" hidden><button class="back-all" data-back="done">← all done</button></div>
+        <div class="lane-cards" id="lane-done"></div>
+        <div class="run-detail" id="done-detail" hidden></div>
+      </section>
+    </main>
+
+    <!-- orchestrator chat = collapsible RIGHT sidebar -->
+    <aside class="orch" id="orch">
+      <div class="orch-head">
+        <span class="orch-dot"></span>
+        <div class="orch-titles">
+          <div class="orch-title">Orchestrator · BA session</div>
+          <div class="orch-sub">describe work — it triages, estimates &amp; queues</div>
+        </div>
+        <button class="orch-collapse" id="orch-collapse" title="collapse sidebar">›</button>
+      </div>
+      <div class="orch-log" id="orch-log"></div>
+      <div class="orch-input">
+        <input id="orch-input" placeholder="e.g. “create an Amex Gold credit product”…" />
+        <button class="btn btn-primary" id="orch-send">Send</button>
+      </div>
+    </aside>
+    <!-- rail to re-open the collapsed sidebar -->
+    <button class="orch-reopen" id="orch-reopen" title="open orchestrator chat" hidden>‹ <span>Orchestrator</span></button>
   </div>
 
-  <main class="board" id="board">
-    <section class="lane" data-lane="backlog">
-      <div class="lane-head"><h2>Backlog</h2><span class="lane-count" id="count-backlog">0</span></div>
-      <div class="lane-cards" id="lane-backlog"></div>
-    </section>
-    <section class="lane" data-lane="queued">
-      <div class="lane-head"><h2>Queued</h2><span class="lane-count" id="count-queued">0</span></div>
-      <div class="lane-cards" id="lane-queued"></div>
-    </section>
-    <section class="lane" data-lane="running">
-      <div class="lane-head"><h2>Running</h2><span class="lane-count" id="count-running">0</span></div>
-      <div class="lane-cards" id="lane-running"></div>
-    </section>
-    <section class="lane lane-done" data-lane="done">
-      <div class="lane-head"><h2>Done</h2><span class="lane-count" id="count-done">0</span></div>
-      <div class="lane-cards" id="lane-done"></div>
-    </section>
-  </main>
-
-  <aside class="detail" id="detail" aria-hidden="true">
-    <!-- populated by app.js -->
-  </aside>
-  <div class="scrim" id="scrim"></div>
-
   <footer class="footer">
-    Prototype for <code>openspec/changes/task-flow-board</code> · temperature =
-    <code>max(usedTokens/(est·pct), runtime/(est·pct))</code> · cool ≤ 1.0 · warm ≤ 1.5 · hot &gt; 1.5
+    Prototype · temperature is multi-signal “needs a human” · a card = a subagent session moving through staged mini-sprints
   </footer>
 
   <script src="app.js"></script>
